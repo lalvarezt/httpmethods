@@ -1,0 +1,33 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "httpmethods"
+version = "1.1.0"
+description = "HTTP verb tampering & methods enumeration"
+readme = "README.md"
+authors = [{name = "Shutdown"}]
+license = {text = "GPL-3.0"}
+requires-python = ">=3.6"
+classifiers = [
+    "Environment :: Console",
+    "License :: OSI Approved :: GNU General Public License v3 (GPLv3)",
+    "Operating System :: POSIX :: Linux",
+    "Programming Language :: Python :: 3",
+    "Topic :: Security",
+]
+dependencies = [
+    "requests",
+    "urllib3",
+    "rich",
+]
+
+[project.urls]
+Homepage = "https://github.com/ShutdownRepo/httpmethods"
+
+[project.scripts]
+httpmethods = "httpmethods:cli_entry"
+
+[tool.setuptools]
+py-modules = ["httpmethods"]

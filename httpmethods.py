@@ -185,7 +185,7 @@ def methods_from_wordlist(wordlist):
         with open(options.wordlist, "r") as infile:
             methods += infile.read().split()
     except Exception as e:
-        logger.error(f"Had some kind of error loading the wordlist ¯\_(ツ)_/¯: {e}")
+        logger.error(rf"Had some kind of error loading the wordlist ¯\_(ツ)_/¯: {e}")
 
 
 def methods_from_http_options(console, options, proxies, headers, cookies):
@@ -338,7 +338,7 @@ def main(options, logger, console):
                     test_dangerous_method = "n"
                 else:
                     test_dangerous_method = console.input(
-                        f"[bold orange3][?][/bold orange3] Do you really want to test method {method} (can be dangerous)? \[y/N] ")
+                        f"[bold orange3][?][/bold orange3] Do you really want to test method {method} (can be dangerous)? [y/N] ")
                 if not test_dangerous_method.lower() == "y":
                     logger.verbose(f"Method {method} will not be tested")
                 else:
@@ -365,7 +365,8 @@ def main(options, logger, console):
         json_export(results, options.jsonfile)
 
 
-if __name__ == '__main__':
+def cli_entry():
+    """Entry point for console script."""
     try:
         print(banner)
         options = get_options()
@@ -384,3 +385,7 @@ if __name__ == '__main__':
     except KeyboardInterrupt:
         logger.info("Terminating script...")
         raise SystemExit
+
+
+if __name__ == '__main__':
+    cli_entry()

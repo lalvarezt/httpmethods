@@ -367,6 +367,7 @@ def main(options, logger, console):
 
 def cli_entry():
     """Entry point for console script."""
+    global logger, console, options
     try:
         print(banner)
         options = get_options()
@@ -376,7 +377,11 @@ def cli_entry():
             # Disable warnings of insecure connection for invalid cerificates
             requests.packages.urllib3.disable_warnings()
             # Allow use of deprecated and weak cipher methods
-            requests.packages.urllib3.util.ssl_.DEFAULT_CIPHERS += ':HIGH:!DH:!aNULL'
+            try:
+                requests.packages.urllib3.util.ssl_.DEFAULT_CIPHERS += ':HIGH:!DH:!aNULL'
+            except AttributeError:
+                # urllib3 v2.0+ removed DEFAULT_CIPHERS
+                pass
             try:
                 requests.packages.urllib3.contrib.pyopenssl.util.ssl_.DEFAULT_CIPHERS += ':HIGH:!DH:!aNULL'
             except AttributeError:

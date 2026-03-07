@@ -6,22 +6,12 @@ With this script, you can test various HTTP methods against an URL. This can be 
 
 ## Setup
 
-Clone the repository and install from source:
-
 ```sh
-git clone https://github.com/ShutdownRepo/httpmethods
-cd httpmethods
-uv tool install .
-# or
-python -m pip install .
+pipx install git+https://github.com/ShutdownRepo/httpmethods
 ```
-
-Or install directly from the repo :
-
+or
 ```sh
 uv tool install git+https://github.com/ShutdownRepo/httpmethods
-# or
-python -m pip install git+https://github.com/ShutdownRepo/httpmethods
 ```
 
 ## Usage
